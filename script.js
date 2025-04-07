@@ -2,17 +2,18 @@
 // Button click handlers
 function handleLoginClick() {
   console.log("Login clicked");
-  // Add login logic here
+  window.location.href = 'login.html';  
 }
 
 function handleRegisterNavClick() {
   console.log("Register nav button clicked");
-  // Add registration navigation logic here
+  window.location.href = 'register.html'; 
 }
 
 function handleRegisterClick() {
   console.log("Register Now clicked");
-  // Add registration logic here
+  window.location.href = 'register.html'; 
 }
+
 
 // You can add more JavaScript functionality as needed

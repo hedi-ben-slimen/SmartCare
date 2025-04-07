@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SmartCare Login</title>
+    <meta property="og:title" content="SmartCare Login" />
+    <meta property="og:description" content="SmartCare Login Page" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@lovable_dev" />
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    
+    <link rel="stylesheet" href="login-styles.css">
+  </head>
+
+  <body>
+    <main class="bg-white min-h-screen">
+      <header class="pt-8 pl-12">
+        <a href="index.html"><img
+          src="https://cdn.builder.io/api/v1/image/assets/c26dca20d34747dbba23897d795644d3/d5c71d4f877651c60a1fed918b712c79eaee4269?placeholderIfAbsent=true"
+          alt="SmartCare Logo"
+          class="logo"
+        /></a>
+      </header>
+
+      <div class="content-container">
+        <section class="login-section">
+          <div class="login-container">
+            <div class="login-header">
+              <h1>Login</h1>
+              <p>Welcome Back! to SmartCare</p>
+            </div>
+
+            <form id="loginForm" class="login-form">
+              <div class="input-field-container">
+                <input type="text" id="name" name="name" value="Flen Ben Falten" required>
+                <div class="label">Your Name</div>
+              </div>
+
+              <div class="input-field-container">
+                <input type="text" id="specialization" name="specialization" value="Generalist" required>
+                <div class="label">Specialisation</div>
+              </div>
+
+              <div class="input-field-container active">
+                <input type="email" id="email" name="email" value="flenbenfalten@gmail.com" required>
+                <div class="label">Email</div>
+              </div>
+
+              <div class="input-field-container password-container">
+                <input type="password" id="password" name="password" required>
+                <div class="label">Password</div>
+                <button type="button" id="togglePassword" class="toggle-password">
+                  <img src="eye.svg" alt="Show password" id="passwordToggleIcon">
+                </button>
+              </div>
+
+              <button type="submit" class="login-button">
+                Log In
+              </button>
+
+              <div class="divider">
+                <div class="divider-line"></div>
+                <div class="divider-text">or</div>
+                <div class="divider-line"></div>
+              </div>
+
+              <button type="button" id="googleLogin" class="social-login-button">
+                <div>Continue with Google</div>
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets/c26dca20d34747dbba23897d795644d3/6c499e3b776249fd85a27c48d18d7b93?apiKey=c26dca20d34747dbba23897d795644d3&"
+                  alt="Google"
+                  class="social-icon"
+                />
+              </button>
+
+              <div class="signup-prompt">
+                Don't have an account? <a href="register.html" class="signup-link">Sign up</a>
+              </div>
+            </form>
+          </div>
+        </section>
+      </div>
+    </main>
+    
+    <script src="login-script.js"></script>
+  </body>
+</html>
