@@ -2,7 +2,7 @@
 // Button click handlers
 function handleLoginClick() {
   console.log("Login clicked");
-  window.location.href = 'login.html';  
+  window.location.href = 'Login.html';  
 }
 
 function handleRegisterNavClick() {
