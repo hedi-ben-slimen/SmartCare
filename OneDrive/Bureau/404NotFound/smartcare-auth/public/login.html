@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <header class="login-header">
+        <img src="openart-image_6zPrH4Br_1740082121216_raw-removebg-preview.png" alt="SmartCare Logo" class="logo">
+    </header>
+
+    <main class="login-container">
+        <h2>Login</h2>
+        <p class="welcome-text">Welcome Back! to SmartCare</p>
+        <form class="login-form" action="/login" method="POST">
+            <input placeholder="username" type="text" name="username" required>
+            <input placeholder="password" type="password" name="password" required>
+            <input placeholder="email" type="email" name="email" required>
+            
+            <button type="submit" class="primary">Log In</button>
+
+            <div class="divider"><span>or</span></div>
+            <button type="button" class="google-btn">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Google Icon">
+                Continue with Google
+            </button>
+        </form>
+
+        <p class="extra-link">Don't have an account? <a href="register.html">Sign up</a></p>
+        <p class="extra-link">Forgot your password? <a href="reset_password.html">Reset it here</a></p>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 SmartCare. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SmartCare Dashboard</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <img src="logoSbg.png" alt="SmartCare Logo" class="logo">
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active">
+                <img src="maison.png" alt="Home Icon">
+                <span>Home</span>
+            </a>
+            <a href="#" class="nav-item">
+                <img src="chercher.png" alt="Search Icon">
+                <span>Search</span>
+            </a>
+            <a href="#" class="nav-item">
+                <img src="commentaire.png" alt="Feedback Icon">
+                <span>Feedback</span>
+            </a>
+            <a href="#" class="nav-item">
+                <img src="utilisateur.png" alt="Profile Icon">
+                <span>Profile</span>
+            </a>
+            <a href="#" class="nav-item">
+                <img src="document.png" alt="History Icon">
+                <span>History</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <input type="text" placeholder="Search ..." class="search-bar">
+            <div class="profile-section">
+                <button class="icon-btn">🔔</button>
+                <button class="icon-btn">⚙️</button>
+                <span>Hi, WelcomeBack <strong id="welcome-name">Jane Doe</strong></span>
+                <img src="avatar.jpg" alt="Profile" class="avatar">
+            </div>
+        </header>
+
+        <!-- Greeting -->
+        <section class="greeting">
+            <h1>Good Morning <span class="highlight" id="greeting-name">Jane</span>!</h1>
+        </section>
+
+        <!-- Layout Wrapper -->
+        <div class="dashboard-layout">
+            <!-- Left: Specialties -->
+            <div class="left-section">
+                <section class="specialties">
+                    <h3>Looking for ....... <a href="#">see all <span style="font-weight: normal;">⌄</span></a></h3>
+                    <div class="cards">
+                        <div class="card">Cardiology</div>
+                        <div class="card">Dermatology</div>
+                        <div class="card">General Medicine</div>
+                        <div class="card">Gynecology</div>
+                        <div class="card">Odontology</div>
+                        <div class="card">Oncology</div>
+                        <div class="card">Ophthalmology</div>
+                        <div class="card">Orthopedics</div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Right: Schedule + Chat -->
+            <div class="right-section">
+                <!-- Schedule -->
+                <div class="schedule">
+                    <div class="schedule-header">
+                        <h3>Upcoming</h3>
+                        <a href="#">View All</a>
+                    </div>
+                    <div class="calendar">
+                        <div class="days">
+                            <div>9<br>MON</div>
+                            <div>10<br>TUE</div>
+                            <div class="active-day">11<br>WED</div>
+                            <div>12<br>THU</div>
+                            <div>13<br>FRI</div>
+                            <div>12<br>SAT</div>
+                        </div>
+                        <div class="appointment">
+                            <p><strong>11 Month</strong> - Wednesday - Today<br>10:00 am - <strong>Dr. Olivia Turner</strong></p>
+                            <p><strong>16 Month</strong> - Monday<br>08:00 am - <strong>Dr. Alexander Bennett</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Widget -->
+                <section class="chat-widget">
+                    <h4>Welcome to our website!</h4>
+                    <p>Welcome to SmartCare. Pick a topic from the list or type down a question!</p>
+                    <button>Chat with us</button>
+                </section>
+            </div>
+        </div>
+    </div>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const name = params.get('name') || 'Jane';
+    
+            // Update greeting
+            const greetingEl = document.getElementById('greeting-name');
+            if (greetingEl) greetingEl.textContent = name;
+    
+            // Update top bar name
+            const welcomeNameEl = document.getElementById('welcome-name');
+            if (welcomeNameEl) welcomeNameEl.textContent = name;
+        });
+    </script>
+    
+    
+</body>
+</html>
