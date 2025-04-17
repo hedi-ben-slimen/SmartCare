@@ -65,13 +65,14 @@ header {
   font-weight: bold;
   line-height: 1.1;
   letter-spacing: -1.6px;
-  text-align: center;
+  text-align: left;
 }
 
 .login-header p {
   color: rgba(150, 150, 150, 1);
   font-size: 18px;
   margin-top: 0.75rem;
+  text-align: left;
 }
 
 /* Login Form */
