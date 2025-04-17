@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Loading - SmartCare</title>
+  <style>
+    body {
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .logo {
+      width: 130px;
+      animation: float 2s ease-in-out infinite;
+    }
+
+    .spinner {
+      margin-top: 30px;
+      width: 40px;
+      height: 40px;
+      border: 5px solid #ccc;
+      border-top: 5px solid #4CAF50;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    .loading-text {
+      margin-top: 25px;
+      font-size: 1.1em;
+      color: #444;
+      opacity: 0;
+      animation: fadeIn 2s ease-in-out forwards 2s;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+      100% { transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+  </style>
+  <script>
+    // Redirect to welcome page after 6 seconds
+    setTimeout(() => {
+      window.location.href = 'welcome.html';
+    }, 6000);
+  </script>
+</head>
+<body>
+  <img src="logoSbg.png" alt="SmartCare Logo" class="logo">
+  <div class="spinner"></div>
+  <div class="loading-text">Starting SmartCare, please wait...</div>
+</body>
+</html>

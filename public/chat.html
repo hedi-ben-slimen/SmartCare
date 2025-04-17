@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SmartCare Chat</title>
+  <link rel="stylesheet" href="main.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    .chat-widget.full-height {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      padding: 30px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    }
+    .chat-widget h2 {
+      margin-bottom: 20px;
+      color: #198754;
+    }
+    .chat-box {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      background-color: #f8f9fa;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .message {
+      padding: 12px 16px;
+      border-radius: 18px;
+      max-width: 70%;
+      word-break: break-word;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    .message.bot {
+      background-color: #e9f7ef;
+      align-self: flex-start;
+      color: #14532d;
+    }
+    .message.user {
+      background-color: #cfe2ff;
+      align-self: flex-end;
+      color: #052c65;
+    }
+    .chat-input {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .chat-input input {
+      flex: 1;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      font-size: 15px;
+      transition: border-color 0.3s;
+    }
+    .chat-input input:focus {
+      border-color: #198754;
+      outline: none;
+    }
+    .chat-input button {
+      padding: 12px 18px;
+      background-color: #198754;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .chat-input button:hover {
+      background-color: #157347;
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <img src="logoSbg.png" alt="SmartCare Logo" class="logo"/>
+    <a href="main.html" class="nav-item" id="nav-home">
+      <img src="maison.png" alt="Home"/>
+      <div>Home</div>
+    </a>
+    <a href="search.html" class="nav-item" id="nav-search">
+      <img src="chercher.png" alt="Search"/>
+      <div>Search</div>
+    </a>
+    <a href="chat.html" class="nav-item active" id="nav-chat">
+      <img src="commentaire.png" alt="SmartCare Chat"/>
+      <div>SmartCare Chat</div>
+    </a>
+    <a href="profile.html" class="nav-item" id="nav-profile">
+      <img src="utilisateur.png" alt="Profile"/>
+      <div>Profile</div>
+    </a>
+    <a href="history.html" class="nav-item" id="nav-history">
+      <img src="document.png" alt="History"/>
+      <div>History</div>
+    </a>
+  </div>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <section class="chat-widget full-height">
+      <h2>Chat with SmartCare Assistant</h2>
+      <div class="chat-box" id="chat-box">
+        <div class="message bot">👋 Hello! How can I assist you today?</div>
+      </div>
+      <div class="chat-input">
+        <input type="text" id="userInput" placeholder="Type your question here..." />
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </section>
+  </main>
+    <script src="chat.js" >
+    </script>
+</body>
+</html>

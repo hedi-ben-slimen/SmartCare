@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Main Page</title>
+  <link rel="stylesheet" href="main.css" />
+  <script src="main.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <img src="logoSbg.png" alt="SmartCare Logo" class="logo"/>
+    <a href="main.html" class="nav-item" id="nav-home">
+      <img src="maison.png" alt="Home"/>
+      <div>Home</div>
+    </a>
+    <a href="search.html" class="nav-item" id="nav-search">
+      <img src="chercher.png" alt="Search"/>
+      <div>Search</div>
+    </a>
+    <a href="chat.html" class="nav-item" id="nav-chat">
+      <img src="commentaire.png" alt="SmartCare Chat"/>
+      <div>SmartCare Chat</div>
+    </a>
+    <a href="profile.html" class="nav-item" id="nav-profile">
+      <img src="utilisateur.png" alt="Profile"/>
+      <div>Profile</div>
+    </a>
+    <a href="history.html" class="nav-item" id="nav-history">
+      <img src="document.png" alt="History"/>
+      <div>History</div>
+    </a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <input type="text" placeholder="Search..." class="search-bar" />
+      <div class="top-buttons">
+        <button class="icon-btn"><i class="fas fa-bell"></i></button>
+        <button class="icon-btn"><i class="fas fa-cog"></i></button>
+        <button class="icon-btn" id="dark-mode-toggle"><i class="fas fa-moon"></i></button>
+        <img src="utilisateur.png" alt="Profile" class="profile-icon" />
+      </div>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content-section">
+      <!-- Left - Doctor Specialties -->
+      <div class="left-panel-container">
+        <div class="panel-header">
+          <h2>Looking for a Specialist?</h2>
+          <button class="see-all-btn" onclick="toggleMoreCards()">See all</button>
+        </div>
+        <div class="left-panel" id="specialty-cards">
+          <div class="card">Cardiology</div>
+          <div class="card">Neurology</div>
+          <div class="card">Pediatrics</div>
+          <div class="card">Dermatology</div>
+          <div class="card extra hidden">Oncology</div>
+    <div class="card extra hidden">Orthopedics</div>
+    <div class="card extra hidden">Psychiatry</div>
+    <div class="card extra hidden">Endocrinology</div>
+    <div class="card extra hidden">Gastroenterology</div>
+    <div class="card extra hidden">Ophthalmology</div>
+    <div class="card extra hidden">Radiology</div>
+    <div class="card extra hidden">Urology</div>
+    <div class="card extra hidden">Pulmonology</div>
+    <div class="card extra hidden">Rheumatology</div>
+    <div class="card extra hidden">Nephrology</div>
+    <div class="card extra hidden">Hematology</div>
+    <div class="card extra hidden">Immunology</div>
+    <div class="card extra hidden">Allergy & Immunology</div>
+    <div class="card extra hidden">General Surgery</div>
+    <div class="card extra hidden">Plastic Surgery</div>
+        </div>
+      </div>
+      <!-- Right - Calendar and Chat -->
+      <div class="right-panel">
+        <div class="calendar" id="calendar"></div>
+        <div class="chat-box">
+          <div class="chat-header">Chat with Assistant</div>
+          <div class="chat-body" id="chat-body">
+            <!-- Example messages -->
+            <div class="message bot">Hello! How can I help you today?</div>
+            <div class="message user"></div>
+          </div>
+          <div class="chat-input">
+            <input type="text" placeholder="Type your message..." />
+            <button><i class="fas fa-paper-plane"></i></button>
+          </div>
+        </div>        
+      </div>
+    </div>
+  </div>
+</body>
+</html>

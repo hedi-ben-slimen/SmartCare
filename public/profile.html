@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Profile</title>
+  <link rel="stylesheet" href="main.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <img src="logoSbg.png" alt="SmartCare Logo" class="logo"/>
+    <a href="main.html" class="nav-item" id="nav-home">
+      <img src="maison.png" alt="Home"/>
+      <div>Home</div>
+    </a>
+    <a href="search.html" class="nav-item" id="nav-search">
+      <img src="chercher.png" alt="Search"/>
+      <div>Search</div>
+    </a>
+    <a href="chat.html" class="nav-item" id="nav-chat">
+      <img src="commentaire.png" alt="SmartCare Chat"/>
+      <div>SmartCare Chat</div>
+    </a>
+    <a href="profile.html" class="nav-item active" id="nav-profile">
+      <img src="utilisateur.png" alt="Profile"/>
+      <div>Profile</div>
+    </a>
+    <a href="history.html" class="nav-item" id="nav-history">
+      <img src="document.png" alt="History"/>
+      <div>History</div>
+    </a>
+  </div>
+
+  <!-- Main Content -->
+  <main class="main-content profile-page">
+
+    <!-- Profile Header -->
+    <div class="profile-header">
+      <div class="profile-pic-wrapper">
+        <img id="profile-img" src="anonymous.png" alt="Profile Picture" />
+        <input type="file" id="upload" accept="image/*"/>
+      </div>
+      <h2 id="profile-name"></h2> <!-- Set by JS -->
+    </div>
+
+    <!-- Profile Info Display -->
+    <section id="profile-display" class="profile-details">
+      <div><strong>Gender:</strong> <span id="display-gender">—</span></div>
+      <div><strong>Blood Type:</strong> <span id="display-blood">—</span></div>
+      <div><strong>Age:</strong> <span id="display-age">—</span></div>
+      <div><strong>Weight (kg):</strong> <span id="display-weight">—</span></div>
+    </section>
+
+    <!-- Profile Edit Form -->
+    <form id="profile-form" class="profile-form" style="display: none;">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="gender">Gender:</label>
+          <input type="text" name="gender" id="gender" required />
+        </div>
+        <div class="form-group">
+          <label for="blood">Blood Type:</label>
+          <input type="text" name="blood" id="blood" required />
+        </div>
+        <div class="form-group">
+          <label for="age">Age:</label>
+          <input type="number" name="age" id="age" required />
+        </div>
+        <div class="form-group">
+          <label for="weight">Weight (kg):</label>
+          <input type="number" name="weight" id="weight" required />
+        </div>
+      </div>
+      <button type="submit" id="save-btn" class="btn-save">💾 Save Info</button>
+    </form>
+
+    <!-- Action Buttons -->
+    <div class="form-actions">
+      <button id="edit-btn" class="btn btn-edit">✏️ Edit Info</button>
+<button type="submit" id="save-btn" class="btn btn-save">💾 Save Info</button>
+
+    </div>
+
+    <!-- Cards -->
+    <div class="cards" style="margin-top: 40px;">
+      <div class="card">Allergies</div>
+      <div class="card">Analysis</div>
+      <div class="card">Vaccinations</div>
+      <div class="card">Medical History</div>
+    </div>
+
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
