@@ -14,62 +14,119 @@
     <meta name="twitter:site" content="@lovable_dev" />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
     
-    <link rel="stylesheet" href="login-styles.css">
+    <link rel="stylesheet" href="home.css">
+    <script src="home.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   </head>
 
+  
   <body>
-    <nav >
-        <div>
-            <a href="index.html"><img
-                src="https://cdn.builder.io/api/v1/image/assets/c26dca20d34747dbba23897d795644d3/d5c71d4f877651c60a1fed918b712c79eaee4269?placeholderIfAbsent=true"
-                alt="SmartCare Logo"
-                class="logo"
-              /></a> 
-        </div>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <img src="logoSbg.png" alt="SmartCare Logo" class="logo"/>
+     
+      <a href="search.html" class="nav-item" id="nav-search">
+        <img src="chercher.png" alt="Search"/>
+        <div>Search</div>
+      </a>
 
-        <div>
-            <button type="button">
-                <label class="container">
-                    <input type="checkbox" checked="checked">
-                      <svg class="bell-regular" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
-                        <path d="M224 0c-17.7 0-32 14.3-32 32V49.9C119.5 61.4 64 124.2 64 200v33.4c0 45.4-15.5 89.5-43.8 124.9L5.3 377c-5.8 7.2-6.9 17.1-2.9 25.4S14.8 416 24 416H424c9.2 0 17.6-5.3 21.6-13.6s2.9-18.2-2.9-25.4l-14.9-18.6C399.5 322.9 384 278.8 384 233.4V200c0-75.8-55.5-138.6-128-150.1V32c0-17.7-14.3-32-32-32zm0 96h8c57.4 0 104 46.6 104 104v33.4c0 47.9 13.9 94.6 39.7 134.6H72.3C98.1 328 112 281.3 112 233.4V200c0-57.4 46.6-104 104-104h8zm64 352H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7s18.7-28.3 18.7-45.3z"></path>
-                      </svg>
-                      <svg class="bell-solid" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
-                        <path d="M224 0c-17.7 0-32 14.3-32 32V51.2C119 66 64 130.6 64 208v18.8c0 47-17.3 92.4-48.5 127.6l-7.4 8.3c-8.4 9.4-10.4 22.9-5.3 34.4S19.4 416 32 416H416c12.6 0 24-7.4 29.2-18.9s3.1-25-5.3-34.4l-7.4-8.3C401.3 319.2 384 273.9 384 226.8V208c0-77.4-55-142-128-156.8V32c0-17.7-14.3-32-32-32zm45.3 493.3c12-12 18.7-28.3 18.7-45.3H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7z"></path>
-                      </svg></label>
-              </button>
-        </div>
+      <a href="main.html" class="nav-item" id="nav-home">
+        <img src="maison.png" alt="Home"/>
+        <div>Home</div>
+      </a>
 
-        <div>
-            <button type="button">
-                
-              </button>
-        </div>
+      <a href="main.html" class="nav-stat" id="nav-Icons">
+        <img src="Icons.png" alt="Icons"/>
+        <div>Stat</div>
+      </a>
 
-        <div>
-            
-        </div>
+      <a href="main.html" class="nav-item" id="nav-home">
+        <img src="Vector (1).png" alt="Home"/>
+        <div></div>
+      </a>
+      
+    </div>
+  
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Top Bar -->
+      <div class="top-bar">
+        <input type="text" placeholder="Search..." class="search-bar" />
+        <div class="top-buttons">
+          <button class="icon-btn"><i class="fas fa-bell"></i></button>
+          <button class="icon-btn"><i class="fas fa-comment"></i></button>
 
-        <div>
-            <button type="button">
-                
-              </button>
-        </div>
+          
 
-        <div>
-            <button type="button">
-                
-              </button>
+          <img src="profile.png" alt="Profile" class="profile-icon" />
         </div>
+      </div>
+  
+      <div class="calendar-container">
+        <div class="header">
+          <h2>Calendar</h2>
+          <select class="select-year-month">
+            <option>September 2022</option>
+            <!-- You can add more months here -->
+          </select>
+        </div>
+    
+        <table class="calendar">
+          <thead>
+            <tr>
+              <th>Sun</th>
+              <th>Mon</th>
+              <th>Tue</th>
+              <th>Wed</th>
+              <th>Thu</th>
+              <th>Fri</th>
+              <th>Sat</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td></td><td></td><td></td><td></td><td>1</td><td>2</td><td>3</td></tr>
+            <tr><td>4</td><td>5</td><td>6</td><td>7</td><td class="dot">8</td><td>9</td><td>10</td></tr>
+            <tr><td>11</td><td>12</td><td>13</td><td class="dot">14</td><td>15</td><td>16</td><td>17</td></tr>
+            <tr><td>18</td><td>19</td><td>20</td><td class="dot">21</td><td>22</td><td>23</td><td>24</td></tr>
+            <tr><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td></td></tr>
+          </tbody>
+        </table>
+    
+        <div class="upcoming">
+          <div class="upcoming-header">
+            <h3>Upcoming</h3>
+            <a href="#">View All</a>
+          </div>
+          <div class="event">
+            <div class="icon">M</div>
+            <div class="details">
+              <p class="title">Montly doctor’s meet</p>
+              <p class="datetime">8 April, 2021 | 04:00 PM</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br><br>  
+      <div class="card">
+        <div class="tag">
+          <span class="dot"></span>
+          <span class="label">DAILY READ</span>
+        </div>
+        <h3 class="title">
+          Equitable medical education with efforts toward real change
+        </h3>
+        <img src="images.jpeg" alt="Medical supplies" class="card-image">
+      </div>
 
-        <div>
-            <button type="button">
-                
-              </button>
-        </div>
-           
-        
-        
-      </nav>
+
+    </div>
+   
+   
+
   </body>
+  </html>
+
+
+
 </html>
+        

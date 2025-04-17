@@ -1,0 +1,110 @@
+<div class="main-content">
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <input type="text" placeholder="Search..." class="search-bar" />
+      <div class="top-buttons">
+        <button class="icon-btn"><i class="fas fa-bell"></i></button>
+        <button class="icon-btn"><i class="fas fa-cog"></i></button>
+        <button class="icon-btn" id="dark-mode-toggle"><i class="fas fa-moon"></i></button>
+
+        <img src="profile.png" alt="Profile" class="profile-icon" />
+      </div>
+    </div>
+
+    
+      <!-- Right - Calendar -->
+      <div class="right-panel">
+        <div class="calendar" id="calendar"></div>
+        
+      </div>
+    </div>
+  </div>
+
+
+  .right-panel {
+    
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-left: 70%;
+  }
+
+
+  /* Calendar */
+  .calendar {
+    background: #fff;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+  }
+  
+  .calendar-header {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 16px;
+    font-size: 20px;
+  }
+  
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+  }
+  
+  .calendar-day {
+    padding: 12px 0;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #f1f1f1;
+    transition: 0.2s all;
+  }
+  
+  .calendar-day.today {
+    background-color: #198754;
+    color: white;
+    font-weight: bold;
+    animation: pulse 1s infinite;
+  }
+  
+  .calendar-day.empty {
+    background: transparent;
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+
+
+
+
+
+
+
+  // Calendar generation
+  function generateCalendar() {
+    const calendar = document.getElementById('calendar');
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = date.getMonth();
+    const today = date.getDate();
+
+    const monthName = date.toLocaleString('default', { month: 'long' });
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    let html = `<div class='calendar-header'>${monthName} ${year}</div><div class='calendar-grid'>`;
+    for (let i = 0; i < firstDay; i++) {
+      html += `<div class='calendar-day empty'></div>`;
+    }
+    for (let day = 1; day <= daysInMonth; day++) {
+      const activeClass = day === today ? 'today' : '';
+      html += `<div class='calendar-day ${activeClass}'>${day}</div>`;
+    }
+    html += '</div>';
+    calendar.innerHTML = html;
+  }
+
+  generateCalendar();
