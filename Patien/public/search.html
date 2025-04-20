@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Search - SmartCare</title>
+  <link rel="stylesheet" href="main.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    .search-full {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      background-color: #fff;
+      border-radius: 14px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+      margin: 30px;
+    }
+    .search-form {
+      width: 100%;
+      max-width: 700px;
+    }
+    .search-input-wrapper {
+      position: relative;
+    }
+    .search-icon {
+      position: absolute;
+      top: 50%;
+      left: 16px;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      opacity: 0.6;
+    }
+    .search-bar.large {
+      width: 100%;
+      font-size: 1rem;
+      padding: 14px 20px 14px 48px;
+      border-radius: 12px;
+      border: 1.5px solid #ccc;
+      background-color: #f8f9fa;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
+      transition: 0.3s ease;
+    }
+    .search-bar.large:focus {
+      outline: none;
+      border-color: #198754;
+      box-shadow: 0 0 0 3px rgba(25,135,84,0.15);
+      background-color: #fff;
+    }
+    .results-section {
+      margin: 40px;
+    }
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .results-grid .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      text-align: center;
+      font-weight: 600;
+      color: #198754;
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+    .results-grid .card:hover {
+      transform: translateY(-4px);
+    }
+    .results-section p {
+      font-size: 16px;
+      color: #666;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <img src="logoSbg.png" alt="SmartCare Logo" class="logo"/>
+    <a href="main.html" class="nav-item" id="nav-home">
+      <img src="maison.png" alt="Home"/>
+      <div>Home</div>
+    </a>
+    <a href="search.html" class="nav-item active" id="nav-search">
+      <img src="chercher.png" alt="Search"/>
+      <div>Search</div>
+    </a>
+    <a href="chat.html" class="nav-item" id="nav-chat">
+      <img src="commentaire.png" alt="SmartCare Chat"/>
+      <div>SmartCare Chat</div>
+    </a>
+    <a href="profile.html" class="nav-item" id="nav-profile">
+      <img src="utilisateur.png" alt="Profile"/>
+      <div>Profile</div>
+    </a>
+    <a href="file.html" class="nav-item" id="nav-history">
+      <img src="document.png" alt="History"/>
+      <div>Files</div>
+    </a>
+  </div>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <section class="search-full">
+      <form class="search-form" action="search.html" method="GET">
+        <div class="search-input-wrapper">
+          <img src="chercher.png" alt="Search Icon" class="search-icon" />
+          <input
+            type="text"
+            class="search-bar large"
+            name="query"
+            id="search-query"
+            placeholder="What are you looking for?"
+            value=""/>
+        </div>
+      </form>
+    </section>
+
+    <section class="results-section">
+      <div id="search-output" class="results-grid"></div>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const input = document.getElementById("search-query");
+      const output = document.getElementById("search-output");
+      const params = new URLSearchParams(window.location.search);
+      const query = params.get("query");
+
+      if (query && input) input.value = query;
+      if (!output || !query) return;
+
+      const specialties = [
+        "Cardiology", "Dermatology", "General Medicine", "Gynecology",
+        "Odontology", "Oncology", "Ophthalmology", "Orthopedics",
+        "Pediatrics", "Neurology", "Psychiatry", "Urology"
+      ];
+
+      const matches = specialties.filter(s =>
+        s.toLowerCase().includes(query.toLowerCase())
+      );
+
+      if (matches.length > 0) {
+        output.innerHTML = matches.map(s => `
+          <div class="card" onclick="window.location.href='doctorList.html?specialty=${encodeURIComponent(s)}'">
+            ${s}
+          </div>
+        `).join("");
+      } else {
+        output.innerHTML = `<p>No results found for "<strong>${query}</strong>"</p>`;
+      }
+    });
+  </script>
+</body>
+</html>

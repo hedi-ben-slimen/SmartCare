@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Doctor Dashboard</title>
+  <link rel="stylesheet" href="main.css" />
+  <style>
+    .request-card {
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 16px;
+      margin: 16px 0;
+      background: #fdfdfd;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+    }
+
+    .request-card strong {
+      font-size: 16px;
+      color: #198754;
+    }
+
+    .request-card button {
+      background-color: #198754;
+      border: none;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 6px;
+      margin-top: 10px;
+      margin-right: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+
+    .request-card button:hover {
+      background-color: #157347;
+    }
+
+    .request-card button.reject {
+      background-color: #dc3545;
+    }
+
+    .request-card button.reject:hover {
+      background-color: #b02a37;
+    }
+
+    #request-container p {
+      margin-top: 24px;
+      color: #888;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Search bar -->
+  <div class="top-search-bar">
+    <input type="text" placeholder="Search..." class="search-bar" />
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <img src="logoSbg.png" alt="SmartCare Logo" class="logo"/>
+    <a href="main.html" class="nav-item active"><img src="maison.png" alt="Home"/><div>Home</div></a>
+    <a href="new.html" class="nav-item"><img src="commentaire.png" alt="News"/><div>News</div></a>
+    <a href="profile.html" class="nav-item"><img src="utilisateur.png" alt="Profile"/><div>Profile</div></a>
+    <a href="file.html" class="nav-item"><img src="document.png" alt="Files"/><div>Files</div></a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <h1>Welcome to SmartCare</h1>
+    <p>This is your dashboard. Manage incoming reservation requests here.</p>
+
+    <h2>📥 Incoming Reservation Requests</h2>
+    <div id="request-container"></div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+  const doctorName = localStorage.getItem('loggedInDoctor');
+  const container = document.getElementById('request-container');
+
+  if (!doctorName) {
+    container.innerHTML = "<p style='color:red;'>Doctor is not logged in.</p>";
+    return;
+  }
+
+  const res = await fetch(`/api/reservations/${encodeURIComponent(doctorName)}`);
+  const reservations = await res.json();
+
+  if (!reservations.length) {
+    container.innerHTML = "<p>No new reservation requests.</p>";
+    return;
+  }
+
+  reservations.forEach(res => {
+    const card = document.createElement('div');
+    card.classList.add('request-card');
+    card.innerHTML = `
+      <strong>${res.patient}</strong> requested an appointment<br>
+      📅 <b>${res.date}</b> ⏰ <b>${res.time}</b><br>
+      Method: <i>${res.method}</i><br>
+      <button onclick="confirm('${res._id}')">✅ Accept</button>
+      <button onclick="reject('${res._id}')">❌ Reject</button>
+    `;
+    container.appendChild(card);
+  });
+});
+
+async function confirm(id) {
+  await fetch(`/api/reservations/${id}/confirm`, { method: 'POST' });
+  alert('Reservation confirmed!');
+  location.reload();
+}
+
+async function reject(id) {
+  await fetch(`/api/reservations/${id}/reject`, { method: 'POST' });
+  alert('Reservation rejected.');
+  location.reload();
+}
+  </script>
+</body>
+</html>

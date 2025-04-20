@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Doctor Login | SmartCare</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="login-header">
+    <img src="openart-image_6zPrH4Br_1740082121216_raw-removebg-preview.png" alt="SmartCare Logo" class="logo">
+  </header>
+
+  <main class="login-container">
+    <h2>Login</h2>
+    <p class="welcome-text">Welcome Back! to SmartCare</p>
+
+    <form class="login-form" id="doctorLoginForm">
+      <input placeholder="Doctor Name" type="text" name="username" required />
+      <input placeholder="Doctor ID" type="text" name="Id" required />
+
+      <select name="speciality" required>
+        <option value="" disabled selected>Select Speciality</option>
+        <option value="Cardiology">Cardiology</option>
+        <option value="Neurology">Neurology</option>
+        <option value="Pediatrics">Pediatrics</option>
+        <option value="Dermatology">Dermatology</option>
+        <option value="Oncology">Oncology</option>
+        <option value="Orthopedics">Orthopedics</option>
+        <option value="Psychiatry">Psychiatry</option>
+        <option value="Endocrinology">Endocrinology</option>
+        <option value="Gastroenterology">Gastroenterology</option>
+        <option value="General Medicine">General Medicine</option>
+      </select>
+
+      <input placeholder="E-mail" type="email" name="email" required />
+      <input placeholder="Password" type="password" name="password" required />
+
+      <button type="submit" class="primary">Log In</button>
+
+      <div class="divider"><span>or</span></div>
+
+      <button type="button" class="google-btn">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Google Icon" />
+        Continue with Google
+      </button>
+    </form>
+
+    <p class="extra-link">Don't have an account? <a href="register.html">Sign up</a></p>
+    <p class="extra-link">Forgot your password? <a href="reset_password.html">Reset it here</a></p>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 SmartCare. All rights reserved.</p>
+  </footer>
+
+  <!-- Loading Spinner -->
+  <div id="loading-overlay" style="display:none;">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Login Script -->
+  <script>
+    document.getElementById('doctorLoginForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const formData = {
+        username: this.username.value.trim(),
+        Id: this.Id.value.trim(),
+        speciality: this.speciality.value.trim(),
+        email: this.email.value.trim(),
+        password: this.password.value.trim()
+      };
+
+      try {
+        const res = await fetch('/api/doctor-auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+          document.getElementById('loading-overlay').style.display = 'flex';
+          setTimeout(() => {
+            window.location.href = data.redirect || 'main.html';
+          }, 2000);
+        } else {
+          alert(data.error || data.message || 'Login failed');
+        }
+      } catch (err) {
+        alert('❌ Server error. Please try again later.');
+        console.error('Login error:', err);
+      }
+    });
+  </script>
+</body>
+</html>

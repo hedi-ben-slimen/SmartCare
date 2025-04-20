@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About SmartCare</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #f4f6f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      color: #333;
+      padding: 40px 20px;
+    }
+
+    .about-wrapper {
+      max-width: 800px;
+      background: white;
+      border-radius: 18px;
+      padding: 50px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    .about-wrapper img {
+      width: 120px;
+      margin-bottom: 30px;
+    }
+
+    .about-wrapper h1 {
+      color: #198754;
+      font-size: 34px;
+      margin-bottom: 20px;
+    }
+
+    .about-wrapper p {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #444;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .about-wrapper {
+        padding: 30px 20px;
+      }
+
+      .about-wrapper h1 {
+        font-size: 26px;
+      }
+
+      .about-wrapper p {
+        font-size: 16px;
+      }
+
+      .about-wrapper img {
+        width: 90px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="about-wrapper">
+    <img src="logoSbg.png" alt="SmartCare Logo">
+    <h1>Welcome to SmartCare</h1>
+    <p>
+      <strong>SmartCare</strong> is an innovative health management platform that connects patients to the care they need. Whether you're looking for a specialist, managing appointments, chatting with a virtual assistant, or storing important medical files, SmartCare makes healthcare simpler, smarter, and more personal. We believe that every individual deserves easy access to trustworthy care—whenever and wherever they need it.
+    </p>
+  </div>
+</body>
+</html>

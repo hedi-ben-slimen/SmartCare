@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">    
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Historique des Réservations</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f9;
+      color: #333;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #1b5e57;
+      font-size: 32px;
+      margin-bottom: 40px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: white;
+      margin-bottom: 16px;
+      padding: 16px 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      transition: transform 0.2s ease;
+    }
+
+    li:hover {
+      transform: scale(1.02);
+    }
+
+    strong {
+      font-size: 16px;
+      color: #198754;
+    }
+
+    small {
+      color: #666;
+      display: block;
+      margin-top: 4px;
+      margin-bottom: 4px;
+    }
+
+    em {
+      color: #444;
+      font-style: italic;
+      font-size: 14px;
+    }
+
+    .empty-message {
+      text-align: center;
+      margin-top: 40px;
+      color: #999;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>  
+
+  <div class="container">
+    <h1>📚 Historique des Réservations</h1>
+    <ul id="history-list"></ul>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const username = localStorage.getItem('loggedInName');
+      const historyList = document.getElementById('history-list');
+      const userHistory = JSON.parse(localStorage.getItem('userHistory') || '{}');
+      const history = userHistory[username] || [];
+
+      if (history.length === 0) {
+        historyList.innerHTML = '<div class="empty-message">Aucune réservation passée pour le moment.</div>';
+      } else {
+        historyList.innerHTML = history.map(res => `
+          <li>
+            <strong>Dr. ${res.doctor}</strong>
+            <small>${res.specialty} | ${res.date} à ${res.time}</small>
+            <em>Mode de paiement: ${res.method}</em>
+          </li>
+        `).join('');
+      }
+    });
+  </script>
+
+</body>
+</html>

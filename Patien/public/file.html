@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Medical Files</title>
+  <link rel="stylesheet" href="main.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #f4f6f9;
+      display: flex;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 50px 40px;
+    }
+
+    .upload-container {
+      background: white;
+      padding: 40px;
+      border-radius: 18px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      max-width: 500px;
+      margin: 0 auto 40px;
+    }
+
+    .upload-btn {
+      font-size: 36px;
+      color: #198754;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      border: 2px dashed #198754;
+      background: #e6f4ed;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .upload-btn:hover {
+      background: #d2eddf;
+    }
+
+    .upload-container input[type="file"] {
+      display: none;
+    }
+
+    .metadata {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .metadata input, .metadata textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    .metadata button {
+      background-color: #198754;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .uploaded-files {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .file-card {
+      background: #fff;
+      padding: 20px;
+      margin-bottom: 15px;
+      border-radius: 14px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: 0.3s ease;
+      cursor: pointer;
+    }
+
+    .file-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    }
+
+    .file-title {
+      font-weight: 700;
+      font-size: 18px;
+      color: #198754;
+    }
+
+    .file-name {
+      color: #333;
+      font-size: 14px;
+    }
+
+    .file-desc {
+      font-size: 13px;
+      color: #666;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <img src="logoSbg.png" alt="SmartCare Logo" class="logo"/>
+    <a href="main.html" class="nav-item" id="nav-home">
+      <img src="maison.png" alt="Home"/><div>Home</div>
+    </a>
+    <a href="search.html" class="nav-item" id="nav-search">
+      <img src="chercher.png" alt="Search"/><div>Search</div>
+    </a>
+    <a href="chat.html" class="nav-item" id="nav-chat">
+      <img src="commentaire.png" alt="SmartCare Chat"/><div>SmartCare Chat</div>
+    </a>
+    <a href="profile.html" class="nav-item" id="nav-profile">
+      <img src="utilisateur.png" alt="Profile"/><div>Profile</div>
+    </a>
+    <a href="file.html" class="nav-item active" id="nav-history">
+      <img src="document.png" alt="History"/><div>Files</div>
+    </a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="upload-container">
+      <label class="upload-btn" for="pdf-upload">+</label>
+      <input type="file" id="pdf-upload" accept="application/pdf" />
+      <div class="metadata" id="metadata-form">
+        <input type="text" id="file-title" placeholder="Title for the file" required />
+        <textarea id="file-desc" rows="3" placeholder="Short description (optional)"></textarea>
+        <button onclick="saveMetadata()">Done & Upload</button>
+      </div>
+    </div>
+
+    <div class="uploaded-files" id="uploaded-files">
+      <!-- Files will appear here -->
+    </div>
+  </div>
+
+  <script>
+    const uploadInput = document.getElementById('pdf-upload');
+    const metadataForm = document.getElementById('metadata-form');
+    const filesDisplay = document.getElementById('uploaded-files');
+    let uploadedFile = null;
+  
+    // Get logged-in username
+    const username = localStorage.getItem("loggedInName") || "guest";
+  
+    uploadInput.addEventListener('change', () => {
+      const file = uploadInput.files[0];
+      if (file && file.type === "application/pdf") {
+        uploadedFile = file;
+        metadataForm.style.display = 'block';
+      } else {
+        alert("❌ Please select a valid PDF.");
+        metadataForm.style.display = 'none';
+      }
+    });
+  
+    function saveMetadata() {
+      const title = document.getElementById('file-title').value.trim();
+      const desc = document.getElementById('file-desc').value.trim();
+  
+      if (!title || !uploadedFile) return alert("Please fill the title and upload a file.");
+  
+      const blobUrl = URL.createObjectURL(uploadedFile);
+  
+      const key = `uploadedFiles_${username}`;
+      const stored = JSON.parse(localStorage.getItem(key) || "[]");
+  
+      stored.push({
+        title: title,
+        description: desc,
+        name: uploadedFile.name,
+        url: blobUrl
+      });
+  
+      localStorage.setItem(key, JSON.stringify(stored));
+  
+      renderFiles();
+      metadataForm.style.display = 'none';
+      uploadInput.value = '';
+      document.getElementById('file-title').value = '';
+      document.getElementById('file-desc').value = '';
+    }
+  
+    function renderFiles() {
+      const key = `uploadedFiles_${username}`;
+      const stored = JSON.parse(localStorage.getItem(key) || "[]");
+  
+      filesDisplay.innerHTML = stored.map(file => `
+        <div class="file-card" onclick="window.open('${file.url}', '_blank')">
+          <div class="file-title">${file.title}</div>
+          <div class="file-name">📄 ${file.name}</div>
+          ${file.description ? `<div class="file-desc">${file.description}</div>` : ""}
+        </div>
+      `).join('');
+    }
+  
+    document.addEventListener("DOMContentLoaded", renderFiles);
+  </script>
+  
+</body>
+</html>

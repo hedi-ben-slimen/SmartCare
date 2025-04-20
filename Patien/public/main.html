@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Main Page</title>
+  <link rel="stylesheet" href="main.css" />
+  <script src="main.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    .reserved-date {
+      background-color: #198754 !important;
+      color: white !important;
+      font-weight: bold;
+      border-radius: 50%;
+      animation: pulse 1.5s infinite;
+      position: relative;
+      cursor: pointer;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(25, 135, 84, 0.5); }
+      70% { box-shadow: 0 0 0 12px rgba(25, 135, 84, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(25, 135, 84, 0); }
+    }
+
+    .reserved-date::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: -28px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #198754;
+      color: white;
+      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 6px;
+      white-space: nowrap;
+      display: none;
+      z-index: 10;
+    }
+
+    .reserved-date:hover::after {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <img src="logoSbg.png" alt="SmartCare Logo" class="logo"/>
+    <a href="main.html" class="nav-item" id="nav-home"><img src="maison.png" alt="Home"/><div>Home</div></a>
+    <a href="search.html" class="nav-item" id="nav-search"><img src="chercher.png" alt="Search"/><div>Search</div></a>
+    <a href="chat.html" class="nav-item" id="nav-chat"><img src="commentaire.png" alt="SmartCare Chat"/><div>SmartCare Chat</div></a>
+    <a href="profile.html" class="nav-item" id="nav-profile"><img src="utilisateur.png" alt="Profile"/><div>Profile</div></a>
+    <a href="file.html" class="nav-item" id="nav-history"><img src="document.png" alt="History"/><div>Files</div></a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <a href="search.html"><input type="text" placeholder="Search..." class="search-bar" /></a>
+      <div class="top-buttons">
+        <button class="icon-btn"><i class="fas fa-bell"></i></button>
+        <button class="icon-btn"><i class="fas fa-cog"></i></button>
+        <button class="icon-btn" id="dark-mode-toggle"><i class="fas fa-moon"></i></button>
+        <img src="profile.png" alt="Profile" class="profile-icon" />
+      </div>
+    </div>
+
+    <!-- Welcome -->
+    <div class="welcome-banner" id="welcome-banner"></div>
+
+    <!-- Content -->
+    <div class="content-section">
+      <!-- Left Panel -->
+      <div class="left-panel-container">
+        <div class="panel-header">
+          <h2>Looking for a Specialist?</h2>
+          <button class="see-all-btn" onclick="toggleMoreCards()">See all</button>
+        </div>
+        <div class="left-panel" id="specialty-cards">
+          <div class="card" onclick="location.href='doctorList.html?specialty=Cardiology'">Cardiology</div>
+          <div class="card" onclick="location.href='doctorList.html?specialty=Neurology'">Neurology</div>
+          <div class="card" onclick="location.href='doctorList.html?specialty=Pediatrics'">Pediatrics</div>
+          <div class="card" onclick="location.href='doctorList.html?specialty=Dermatology'">Dermatology</div>
+          <div class="card extra hidden" onclick="location.href='doctorList.html?specialty=Oncology'">Oncology</div>
+          <div class="card extra hidden" onclick="location.href='doctorList.html?specialty=Orthopedics'">Orthopedics</div>
+          <div class="card extra hidden" onclick="location.href='doctorList.html?specialty=Psychiatry'">Psychiatry</div>
+          <div class="card extra hidden" onclick="location.href='doctorList.html?specialty=Endocrinology'">Endocrinology</div>
+          <div class="card extra hidden" onclick="location.href='doctorList.html?specialty=Gastroenterology'">Gastroenterology</div>
+          <div class="card extra hidden" onclick="location.href='doctorList.html?specialty=Ophthalmology'">Ophthalmology</div>
+          <div class="card extra hidden" onclick="location.href='doctorList.html?specialty=Radiology'">Radiology</div>
+          <div class="card extra hidden" onclick="location.href='doctorList.html?specialty=Urology'">Urology</div>
+          <div class="card extra hidden" onclick="location.href='doctorList.html?specialty=Pulmonology'">Pulmonology</div>
+          <div class="card extra hidden" onclick="location.href='doctorList.html?specialty=Rheumatology'">Rheumatology</div>
+          <div class="card extra hidden" onclick="location.href='doctorList.html?specialty=Nephrology'">Nephrology</div>
+          <div class="card extra hidden" onclick="location.href='doctorList.html?specialty=Hematology'">Hematology</div>
+          <div class="card extra hidden" onclick="location.href='doctorList.html?specialty=Immunology'">Immunology</div>
+          <div class="card extra hidden" onclick="location.href='doctorList.html?specialty=Allergy & Immunology'">Allergy & Immunology</div>
+          <div class="card extra hidden" onclick="location.href='doctorList.html?specialty=General Surgery'">General Surgery</div>
+          <div class="card extra hidden" onclick="location.href='doctorList.html?specialty=Plastic Surgery'">Plastic Surgery</div>
+        </div>
+      </div>
+
+      <!-- Right Panel -->
+      <div class="right-panel">
+        <div class="calendar" id="calendar"></div>
+
+        <div id="reservation-display" class="reservation-list">
+          <h3>📝 Your Upcoming Reservations</h3>
+          <ul id="reservation-list" style="list-style: none; padding-left: 0;"></ul>
+        </div>
+
+        <a href="chat.html" style="text-decoration: none; color: inherit;">
+          <div class="chat-box" style="cursor: pointer;">
+            <div class="chat-header">Chat with Assistant</div>
+            <div class="chat-body" id="chat-body">
+              <div class="message bot">Hello! How can I help you today?</div>
+              <div class="message user">.......</div>
+            </div>
+            <div class="chat-input">
+              <input type="text" placeholder="Type your message..." disabled />
+              <button disabled><i class="fas fa-paper-plane"></i></button>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Inside <script> tag, REPLACE ALL JS with this: -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const username = localStorage.getItem('loggedInName');
+    const listContainer = document.getElementById('reservation-list');
+    const calendar = document.getElementById('calendar');
+
+    if (!username) return;
+
+    const now = new Date();
+    const allReservations = JSON.parse(localStorage.getItem('userReservations') || '{}');
+    const userHistory = JSON.parse(localStorage.getItem('userHistory') || {});
+    const reservations = allReservations[username] || [];
+
+    const upcoming = [];
+    const history = userHistory[username] || [];
+
+    // Move past reservations to history
+    reservations.forEach(res => {
+      const resDate = new Date(`${res.date}T${res.time}`);
+      if (resDate < now) {
+        history.push(res);
+      } else {
+        upcoming.push(res);
+      }
+    });
+
+    // Save updated data
+    userHistory[username] = history;
+    allReservations[username] = upcoming;
+    localStorage.setItem('userHistory', JSON.stringify(userHistory));
+    localStorage.setItem('userReservations', JSON.stringify(allReservations));
+
+    // Render upcoming reservations
+    function renderUpcoming() {
+      listContainer.innerHTML = '';
+
+      if (upcoming.length === 0) {
+        listContainer.innerHTML = '<li>No reservations yet.</li>';
+        return;
+      }
+
+      upcoming.forEach((res, index) => {
+        const item = document.createElement('li');
+        item.innerHTML = `
+          <div style="margin-bottom: 12px; background: #fff; padding: 12px 16px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); position: relative;">
+            <strong>Dr. ${res.doctor}</strong><br/>
+            <small>${res.specialty} | ${res.date} at ${res.time}</small><br/>
+            <em>Payment: ${res.method}</em>
+            <button class="delete-btn" data-index="${index}" style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 16px; color: red; cursor: pointer;">🗑️</button>
+          </div>
+        `;
+        listContainer.appendChild(item);
+      });
+
+      // Handle delete button
+      document.querySelectorAll('.delete-btn').forEach(btn => {
+        btn.addEventListener('click', e => {
+          const index = +e.target.getAttribute('data-index');
+          upcoming.splice(index, 1);
+          allReservations[username] = upcoming;
+          localStorage.setItem('userReservations', JSON.stringify(allReservations));
+          renderUpcoming();
+        });
+      });
+    }
+
+    renderUpcoming();
+
+    // Highlight calendar dates
+    setTimeout(() => {
+      const days = calendar.querySelectorAll('div'); // adjust this if needed
+      upcoming.forEach(res => {
+        const date = new Date(res.date);
+        const day = date.getDate();
+        days.forEach(el => {
+          if (el.textContent === String(day)) {
+            el.classList.add('reserved-date');
+            el.setAttribute('data-tooltip', `Dr. ${res.doctor}, ${res.time}`);
+          }
+        });
+      });
+    }, 100);
+  });
+</script>
+
+  
+</body>
+</html>
