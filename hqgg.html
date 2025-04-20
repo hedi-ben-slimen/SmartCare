@@ -108,3 +108,731 @@
   }
 
   generateCalendar();
+
+
+
+
+
+
+
+
+
+
+
+  
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SmartCare Login</title>
+    <meta property="og:title" content="SmartCare Login" />
+    <meta property="og:description" content="SmartCare Login Page" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@lovable_dev" />
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    
+    <link rel="stylesheet" href="home.css">
+    <script src="home.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  </head>
+
+  
+  <body class="body">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <img src="logoSbg.png" alt="SmartCare Logo" class="logo"/>
+     
+      <a href="search.html" class="nav-item" id="nav-search">
+        <img src="chercher.png" alt="Search"/>
+        <div><b>Search</b></div>
+      </a>
+
+      <a href="main.html" class="nav-item" id="nav-home">
+        <img src="maison.png" alt="Home"/>
+        <div><b>Home</b></div>
+      </a>
+
+      <a href="main.html" class="nav-stat" id="nav-Icons">
+        <img src="stats.png" alt="Icons"/>
+        <div><b>Stats</b></div>
+      </a>
+      <br><br><br><br><br><br><br><br><br><br>
+      <a href="main.html" class="nav-item" id="nav-home">
+        <img src="arrow.png" alt="Icons"/>
+        <div><b>Exit</b></div>
+      </a>
+      
+    </div>
+  
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Top Bar -->
+      <div class="top-bar">
+        <input type="text" placeholder="Search..." class="search-bar" />
+        <div class="top-buttons">
+          <button class="icon-btn"><i class="fas fa-bell"></i></button>
+          <button class="icon-btn"><i class="fas fa-comment"></i></button>
+
+          
+
+          <img src="profile.png" alt="Profile" class="profile-icon" />
+        </div>
+      </div>
+      <!-- report-card -->
+      <div class="report-card">
+        <div class="greeting">Good Morning Dr. Kim!</div>
+        
+        <div class="section-title">Visits for Today</div>
+        <div class="total-visits">104</div>
+        
+        <div class="patient-stats">
+            <div class="patient-type">
+              <div class="patient-label"><b>New Patients</b></div>
+              <div class="patient-count"><b>40</b></div>
+                
+            </div>
+            <div class="patient-type">
+              <div class="patient-label"><b>Old Patients</b></div>
+              <div class="patient-count"><b>64</b></div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="patient-list">
+      <div class="header">
+        <h1>Patient List</h1>
+        <select class="select-year-month">
+          <option>today</option>
+        </select>
+      </div>
+      
+      <div class="patient-item">
+          <div class="patient-avatar">SM</div>
+          <div class="patient-info">
+              <div class="patient-name">Stacy Mitchell</div>
+              <div class="patient-visit-type">Weekly Visit</div>
+          </div>
+          <div class="patient-time">9:15 AM</div>
+      </div>
+      
+      <div class="patient-item">
+          <div class="patient-avatar">AD</div>
+          <div class="patient-info">
+              <div class="patient-name">Amy Dunham</div>
+              <div class="patient-visit-type">Routine Checkup</div>
+          </div>
+          <div class="patient-time">9:30 AM</div>
+      </div>
+      
+      <div class="patient-item">
+          <div class="patient-avatar">DJ</div>
+          <div class="patient-info">
+              <div class="patient-name">Demi Joan</div>
+              <div class="patient-visit-type">Report</div>
+          </div>
+          <div class="patient-time">9:50 AM</div>
+      </div>
+      
+      <div class="patient-item">
+          <div class="patient-avatar">SM</div>
+          <div class="patient-info">
+              <div class="patient-name">Susan Myers</div>
+              <div class="patient-visit-type">Weekly Visit</div>
+          </div>
+          <div class="patient-time">10:15 AM</div>
+      </div>
+    </div>
+     <!---------------calendar-container------------------>
+      <div class="calendar-container">
+        <div class="header">
+          <h2>Calendar</h2>
+          <select class="select-year-month">
+            <option>September 2022</option>
+            
+          </select>
+        </div>
+    
+        <table class="calendar">
+          <thead>
+            <tr>
+              <th>Sun</th>
+              <th>Mon</th>
+              <th>Tue</th>
+              <th>Wed</th>
+              <th>Thu</th>
+              <th>Fri</th>
+              <th>Sat</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td></td><td></td><td></td><td></td><td>1</td><td>2</td><td>3</td></tr>
+            <tr><td>4</td><td>5</td><td>6</td><td>7</td><td class="dot">8</td><td>9</td><td>10</td></tr>
+            <tr><td>11</td><td>12</td><td>13</td><td class="dot">14</td><td>15</td><td>16</td><td>17</td></tr>
+            <tr><td>18</td><td>19</td><td>20</td><td class="dot">21</td><td>22</td><td>23</td><td>24</td></tr>
+            <tr><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td></td></tr>
+          </tbody>
+        </table>
+    
+        <div class="upcoming">
+          <div class="upcoming-header">
+            <h3>Upcoming</h3>
+            <a href="#">View All</a>
+          </div>
+          <div class="event">
+            <div class="icon">M</div>
+            <div class="details">
+              <p class="title">Montly doctor’s meet</p>
+              <p class="datetime">8 April, 2021 | 04:00 PM</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br><br>  
+      <div class="card">
+        <div class="tag">
+          <span class="dot"></span>
+          <span class="label">DAILY READ</span>
+        </div>
+        <h3 class="title">
+          Equitable medical education with efforts toward real change
+        </h3>
+        <img src="images.jpeg" alt="Medical supplies" class="card-image">
+      </div>
+
+
+    </div>
+   
+   
+
+  </body>
+  </html>
+
+
+
+</html>
+        
+
+
+/* ----------------------------------
+   🌐 MAIN PAGE CUSTOM STYLES (Professional Look)
+---------------------------------- */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f4f6f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    color: #222;
+  }
+  
+  body.dark-mode {
+    background-color: #1e1e1e;
+    color: #fff;
+  }
+  
+  .main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 32px;
+    overflow-y: auto;
+  }
+  
+  /* Sidebar */
+  .sidebar {
+    width: 110px;
+    background: #ffffff;
+    border-right: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 0;
+    gap: 30px;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.04);
+  }
+  
+  .sidebar img.logo {
+    width: 64px;
+    margin-bottom: 12px;
+  }
+  
+  .nav-item {
+    text-align: center;
+    font-size: 13px;
+    color: #333333;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 0;
+    width: 100%;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+  }
+  .nav-stat{
+    text-align: center;
+    font-size: 13px;
+    color: #333333;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 0;
+    width: 100%;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+ 
+
+  }
+  
+  .nav-item img {
+    width: 28px;
+    height: 28px;
+    margin-bottom: 6px;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .nav-item:hover {
+    background-color: #f7f9fb;
+    cursor: pointer;
+    transform: scale(1.02);
+  }
+  
+  .nav-item.active {
+    background-color: #e8f5ee;
+    font-weight: 600;
+    color: #198754;
+    border-left: 3px solid #198754;
+  }
+  
+  .nav-item.active img {
+    filter: brightness(0) saturate(100%) invert(39%) sepia(60%) saturate(561%) hue-rotate(86deg) brightness(94%) contrast(89%);
+  }
+  
+  /* Top Bar */
+  /* 🔝 Top Bar: Refined Layout */
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+    padding: 12px 20px;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* 🔍 Modern Search Bar */
+  .search-bar {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    width: 360px;
+    background: #f1f3f5;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.04);
+  }
+  
+  .search-bar:focus {
+    background: #fff;
+    outline: none;
+    border: 1px solid #198754;
+    box-shadow: 0 0 0 3px rgba(25, 135, 84, 0.15);
+  }
+  
+  /* 🛠️ Top Buttons Container */
+  .top-buttons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  /* 🌟 Icon Buttons */
+  .icon-btn {
+    background: #f6f6f6;
+    border: none;
+    font-size: 17px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+  
+  .icon-btn:hover {
+    background-color: #eaf8f1;
+    color: #198754;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  }
+  
+  /* 👤 Profile Icon */
+  .profile-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #198754;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  }
+  
+  
+  /* Layout Panels */
+  .content-section {
+    display: flex;
+    gap: 24px;
+    flex: 1;
+  }
+  
+  
+  
+  
+  
+  .panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  .panel-header h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  .see-all-btn {
+    background: none;
+    border: none;
+    font-size: 14px;
+    color: #198754;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+ 
+  
+  .hidden {
+    display: none;
+  }
+  
+  /* Smaller Right Panel */
+ 
+
+
+
+
+
+
+  .calendar-container {
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-left: 74%;
+    width: 300px;
+    padding: 20px;
+    border-radius: 12px;
+
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .select-year-month{
+    
+        border: 0px solid transparent;
+        background-color: transparent;
+        font-size: 1em;
+        padding: 4px 8px;
+        outline: none;
+      
+  }
+  
+  .calendar {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+
+  }
+  
+  .calendar th, .calendar td {
+    width: 14.2%;
+    text-align: center;
+    padding: 8px 0;
+    color: #333;
+  }
+  
+  .calendar td.dot {
+    position: relative;
+    color: black;
+  }
+  
+  .calendar td.dot::after {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .upcoming {
+    margin-top: 20px;
+  }
+  
+  .upcoming-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .upcoming-header h3 {
+    margin: 0;
+  }
+  
+  .upcoming-header a {
+    font-size: 0.85em;
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .event {
+    display: flex;
+    align-items: center;
+    background-color: #eaf3fc;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+  }
+  
+  .icon {
+    background-color: #007bff;
+    color: white;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .title {
+    margin: 0;
+    font-weight: bold;
+    font-size: 0.95em;
+  }
+  
+  .datetime {
+    margin: 2px 0 0;
+    font-size: 0.85em;
+    color: #666;
+  }
+
+
+
+  .card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 25px 25px #00000026;
+    width: 300px;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-left: 76%;
+
+  }
+  
+  .tag {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    color: #999;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .tag .dot {
+    width: 6px;
+    height: 6px;
+    background-color: #9ee6b8;
+    border-radius: 50%;
+    margin-right: 6px;
+  }
+  
+  .title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #222;
+  }
+  
+  .card-image {
+    width: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+  }
+
+
+
+
+  .report-card {
+    background-color: rgba(23, 140, 93, 1);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 300px;
+    text-align: left;
+    padding-right: 17%;
+    margin-left: 5%;
+}
+
+.greeting {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 16px;
+    color: #F5F5F5;
+    margin-bottom: 5px;
+}
+
+.total-visits {
+    font-size: 48px;
+    font-weight: bold;
+    color: #F5F5F5;
+    margin: 20px 0;
+}
+
+.patient-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+    
+}
+
+.patient-type{
+    text-align: center;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    padding-right:40%;
+    margin-right: 10%;
+    
+}
+
+
+.patient-count {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    text-align:justify;
+   
+}
+
+.patient-label {
+    font-size: 10px;
+    color: black;
+    text-align: center;
+    
+}
+
+
+
+h1 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.date-header {
+  color: #555;
+  font-weight: bold;
+  margin: 15px 0 10px 0;
+  font-size: 16px;
+}
+
+.patient-list {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 15px;
+  max-width: 500px;
+  padding-right: 1%;
+  margin-left: 5%;
+  border: transparent;
+
+  
+}
+
+.patient-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.patient-item:last-child {
+  border-bottom: none;
+}
+
+.patient-avatar {
+  width: 40px;
+  height: 40px;
+  background-color: #e0e0e0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  font-weight: bold;
+  color: #555;
+}
+
+.patient-info {
+  flex-grow: 1;
+}
+
+.patient-name {
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+
+.patient-visit-type {
+  color: #666;
+  font-size: 14px;
+}
+
+.patient-time {
+  color: #666;
+  font-size: 14px;
+}
+
+
+.body{
+  background-color: white;
+}
